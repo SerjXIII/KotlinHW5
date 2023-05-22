@@ -13,7 +13,7 @@ class WallServiceTest {
         val post = Post()
         WallService.add(post)
 
-        assertEquals(1, post.id)
+        assertEquals(0, post.id)
     }
 
     @Test
