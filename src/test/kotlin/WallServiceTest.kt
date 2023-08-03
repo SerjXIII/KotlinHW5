@@ -10,26 +10,73 @@ class WallServiceTest {
 
     @Test
     fun addTest() {
-        val post = Post()
+        val post = Post(
+                copyHistory = emptyArray(),
+                copyright = Post.Copyright(),
+                text = "", donut = Post.Donut(),
+                geo = Post.Geo(),
+                attachments = emptyArray())
         WallService.add(post)
 
         assertEquals(1, post.id)
     }
 
     @Test
-    fun updateTestTrue() {
-        val post = Post()
+    fun addTest2() {
+        val post = Post(
+                copyHistory = emptyArray(),
+                copyright = Post.Copyright(),
+                text = "", donut = Post.Donut(),
+                geo = Post.Geo(),
+                attachments = emptyArray())
         WallService.add(post)
-        val newPost = Post(id = 1)
+        val post2 = Post(
+                copyHistory = emptyArray(),
+                copyright = Post.Copyright(),
+                text = "", donut = Post.Donut(),
+                geo = Post.Geo(),
+                attachments = emptyArray())
+        WallService.add(post2)
+
+        assertEquals(2, post2.id)
+    }
+
+    @Test
+    fun updateTestTrue() {
+        val post = Post(
+                copyHistory = emptyArray(),
+                copyright = Post.Copyright(),
+                text = "", donut = Post.Donut(),
+                geo = Post.Geo(),
+                attachments = emptyArray())
+        WallService.add(post)
+        val newPost = Post(
+                id = 1,
+                copyHistory = emptyArray(),
+                copyright = Post.Copyright(),
+                text = "", donut = Post.Donut(),
+                geo = Post.Geo(),
+                attachments = emptyArray())
 
         assertTrue(WallService.update(newPost))
     }
 
     @Test
     fun updateTestFalse() {
-        val post = Post()
+        val post = Post(
+                copyHistory = emptyArray(),
+                copyright = Post.Copyright(),
+                text = "", donut = Post.Donut(),
+                geo = Post.Geo(),
+                attachments = emptyArray())
         WallService.add(post)
-        val newPost = Post(id = 2)
+        val newPost = Post(
+                id = 2,
+                copyHistory = emptyArray(),
+                copyright = Post.Copyright(),
+                text = "", donut = Post.Donut(),
+                geo = Post.Geo(),
+                attachments = emptyArray())
 
         assertFalse(WallService.update(newPost))
     }
