@@ -80,4 +80,29 @@ class WallServiceTest {
 
         assertFalse(WallService.update(newPost))
     }
+
+    @Test
+    fun createComment(){
+        val post = Post(
+            id = 1,
+            copyHistory = emptyArray(),
+            copyright = Post.Copyright(),
+            text = "", donut = Post.Donut(),
+            geo = Post.Geo(),
+            attachments = emptyArray())
+
+        WallService.add(post)
+
+        WallService.createComment(1,Comment(1,1,))
+
+        val id = WallService.getCommentId(0)
+
+        assertEquals(1, id)
+    }
+
+    @Test(expected = PostNotFoundException::class)
+    fun createCommentException(){
+        WallService.createComment(1,Comment(1,1,))
+    }
+
 }
